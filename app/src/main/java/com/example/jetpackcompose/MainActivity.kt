@@ -30,7 +30,7 @@ fun Greeting(name: String) {
     Column(modifier = Modifier.padding(16.dp)) {
         Text(text = "Hello $name!")
         Spacer(modifier = Modifier.preferredHeight(16.dp))
-        Text(text = "This is an empty Jetpack Compose Project, and can be referenced as a smple for configuring gradle and resource files")
+        Text(text = "This is an empty Jetpack Compose Project, and can be referenced as a sample for configuring gradle and resource files")
     }
 }
 
