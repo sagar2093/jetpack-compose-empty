@@ -3,11 +3,16 @@ package com.example.jetpackcompose
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.Composable
-import androidx.ui.core.Text
+import androidx.ui.core.Modifier
 import androidx.ui.core.setContent
+import androidx.ui.foundation.Text
 import androidx.ui.layout.Column
+import androidx.ui.layout.Spacer
+import androidx.ui.layout.padding
+import androidx.ui.layout.preferredHeight
 import androidx.ui.material.MaterialTheme
 import androidx.ui.tooling.preview.Preview
+import androidx.ui.unit.dp
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,9 +27,10 @@ class MainActivity : AppCompatActivity() {
 
 @Composable
 fun Greeting(name: String) {
-    Column {
+    Column(modifier = Modifier.padding(16.dp)) {
         Text(text = "Hello $name!")
-        Text(text = "This is an empty Jetpack Compose Project, and can be used for configuring gradle and resource files")
+        Spacer(modifier = Modifier.preferredHeight(16.dp))
+        Text(text = "This is an empty Jetpack Compose Project, and can be referenced as a smple for configuring gradle and resource files")
     }
 }
 
