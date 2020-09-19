@@ -17,6 +17,10 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    buildFeatures {
+        compose true
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -31,24 +35,21 @@ android {
 
     kotlinOptions {
         jvmTarget = '1.8'
-    }
-
-    buildFeatures {
-        compose true
+        useIR = true
     }
 
     composeOptions {
-        kotlinCompilerVersion "$kotlin_version"
+        //kotlinCompilerVersion "$kotlin_version"
         kotlinCompilerExtensionVersion "$compose_version"
     }
 }
 
-tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+/*tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
     kotlinOptions {
         jvmTarget = "1.8"
         freeCompilerArgs += ["-Xallow-jvm-ir-dependencies", "-Xskip-prerelease-check"]
     }
-}
+}*/
 
 dependencies {
 
