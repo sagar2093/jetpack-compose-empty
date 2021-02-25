@@ -1,6 +1,6 @@
 plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
+    id "com.android.application"
+    id "kotlin-android"
 }
 
 android {
@@ -24,7 +24,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
         }
     }
 
@@ -34,48 +34,50 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = '1.8'
         allWarningsAsErrors = true
-        useIR = true
+        //jvmTarget = "1.8"
+        //useIR = true
     }
 
     composeOptions {
-        kotlinCompilerVersion "$kotlin_version"
         kotlinCompilerExtensionVersion "$compose_version"
     }
 }
 
 dependencies {
-
-    implementation "androidx.compose.runtime:runtime:$compose_version"
-    implementation "androidx.compose.ui:ui:$compose_version"
-    implementation "androidx.compose.foundation:foundation-layout:$compose_version"
-    implementation "androidx.compose.material:material:$compose_version"
-    implementation "androidx.compose.material:material-icons-extended:$compose_version"
-    implementation "androidx.compose.foundation:foundation:$compose_version"
-    implementation "androidx.compose.animation:animation:$compose_version"
-    implementation "androidx.compose.ui:ui-tooling:$compose_version"
-    implementation "androidx.compose.runtime:runtime-livedata:$compose_version"
-
-    implementation('androidx.appcompat:appcompat:1.2.0')
-    implementation('androidx.activity:activity-ktx:1.1.0')
+    implementation("androidx.appcompat:appcompat:1.2.0")
+    implementation("androidx.activity:activity-ktx:1.2.0")
     implementation "androidx.core:core-ktx:1.3.2"
 
-    androidTestImplementation("junit:junit:4.13.1")
+    implementation "androidx.compose.ui:ui:$compose_version"
+    // Tooling support (Previews, etc.)
+    implementation "androidx.compose.ui:ui-tooling:$compose_version"
+    // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
+    implementation "androidx.compose.foundation:foundation:$compose_version"
+    // Material Design
+    implementation "androidx.compose.material:material:$compose_version"
+    // Material design icons
+    implementation "androidx.compose.material:material-icons-core:$compose_version"
+    implementation "androidx.compose.material:material-icons-extended:$compose_version"
+    // Integration with activities
+    implementation "androidx.activity:activity-compose:1.3.0-alpha03"
+    // Integration with ViewModels
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha02"
+    // Integration with observables
+    implementation "androidx.compose.runtime:runtime-livedata:$compose_version"
+    implementation "androidx.compose.runtime:runtime-rxjava2:$compose_version"
+
+    // UI Tests
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
+
+    androidTestImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test:rules:1.3.0")
     androidTestImplementation("androidx.test:runner:1.3.0")
 }
 
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
     kotlinOptions {
-        // Treat all Kotlin warnings as errors
-        allWarningsAsErrors = true
-        freeCompilerArgs += '-Xopt-in=kotlin.RequiresOptIn'
-        // Enable experimental coroutines APIs, including Flow
-        freeCompilerArgs += '-Xopt-in=kotlin.Experimental'
-        freeCompilerArgs += '-Xallow-jvm-ir-dependencies'
-
-        // Set JVM target to 1.8
         jvmTarget = "1.8"
+        freeCompilerArgs += ["-Xallow-jvm-ir-dependencies"]
     }
 }
