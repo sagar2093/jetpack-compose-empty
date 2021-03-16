@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
+
 @Composable
 fun Greeting(name: String) {
     Column(modifier = Modifier.padding(16.dp)) {
